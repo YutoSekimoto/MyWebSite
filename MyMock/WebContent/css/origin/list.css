@@ -1,0 +1,64 @@
+.contain{
+
+	border: 1px solid black;
+	width: 600px;
+	margin: auto;
+
+}
+.top{
+
+	text-align: right;
+	background-color: black;
+
+}
+.top span{
+
+	color: white;
+
+}
+.top small{
+
+	margin-right: 30px;
+	text-decoration: underline;
+
+}
+
+.list-area{
+
+	margin-top: 50px;
+	margin-bottom: 50px;
+	margin-left: 10px;
+	margin-right: 10px;
+
+}
+
+.list-area h3{
+
+	text-align: center;
+	margin-bottom: 50px;
+
+}
+.list-area p{
+
+	text-align: right;
+
+}
+.list-area .login-button{
+
+	text-align: center;
+	margin-top: 50px;
+
+}
+.list-area label{
+	font-weight: bold;
+}
+
+.bottom{
+
+	padding-top: 50px;
+	border-top: 5px solid black;
+	margin-left: 10px;
+	margin-right: 10px;
+
+
+}

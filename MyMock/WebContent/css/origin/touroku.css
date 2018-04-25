@@ -1,0 +1,54 @@
+.contain{
+
+	border: 1px solid black;
+	width: 500px;
+	margin: auto;
+
+}
+.top{
+
+	text-align: right;
+	background-color: black;
+
+}
+.top span{
+
+	color: white;
+
+}
+.top small{
+
+	margin-right: 30px;
+	text-decoration: underline;
+
+}
+
+.touroku-area{
+
+	margin-top: 50px;
+	margin-bottom: 50px;
+
+}
+.touroku-area-contain{
+
+	margin-left: 10px;
+	margin-right: 10px;
+
+}
+.touroku-area h3{
+
+	text-align: center;
+	margin-bottom: 50px;
+
+}
+
+.touroku-area .login-button{
+
+	text-align: center;
+	margin-top: 50px;
+
+}
+.touroku-area label{
+	font-weight: bold;
+}
+

@@ -1,0 +1,76 @@
+.contain{
+
+	border: 1px solid black;
+	width: 500px;
+	margin: auto;
+
+}
+.top{
+
+	width: 500px;
+	margin: auto;
+	text-align: right;
+	background-color: black;
+
+}
+.top span{
+
+	color: white;
+
+}
+.top small{
+
+	margin-right: 30px;
+	text-decoration: underline;
+
+}
+
+.update-area{
+
+	width: 500px;
+	margin: auto;
+	margin-top: 50px;
+	margin-bottom: 50px;
+
+}
+
+.update-area h3{
+
+	text-align: center;
+	margin-bottom: 50px;
+
+}
+.update-area-contain{
+
+	margin-left: 10px;
+	margin-right: 10px;
+
+}
+.update-area .login-id{
+
+	margin-bottom: 50px;
+	margin-left: 10px;
+	margin-right: 10px;
+
+}
+.update-area h6{
+
+	font-weight: bold;
+
+
+}
+.update-area span{
+
+	margin-left: 50px;
+	font-weight: normal;
+
+}
+.update-area .login-button{
+
+	text-align: center;
+	margin-top: 50px;
+
+}
+.update-area label{
+	font-weight: bold;
+}

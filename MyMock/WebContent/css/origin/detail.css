@@ -1,0 +1,62 @@
+.contain{
+
+	border: 1px solid black;
+	width: 500px;
+	margin: auto;
+
+}
+.top{
+
+	text-align: right;
+	background-color: black;
+
+}
+.top span{
+
+	color: white;
+
+}
+.top small{
+
+	margin-right: 30px;
+	text-decoration: underline;
+
+}
+
+.detail-area{
+
+	margin-top: 50px;
+	margin-bottom: 50px;
+
+}
+.detail-area h3{
+
+	text-align: center;
+	margin-bottom: 50px;
+
+}
+.detail-area-contain{
+
+	margin-left: 10px;
+	margin-right: 10px;
+
+}
+.detail-area tr{
+	height: 50px;
+}
+.detail-area th{
+
+	width: 250px;
+
+}
+.detail-area td{
+
+	width: 250px;
+
+}
+.detail-area table{
+
+	margin-bottom: 50px;
+
+}
+

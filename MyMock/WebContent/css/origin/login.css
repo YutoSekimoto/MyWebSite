@@ -1,0 +1,35 @@
+.contain{
+
+	border: 1px solid black;
+	width: 500px;
+	margin: auto;
+
+}
+.login-area{
+
+	margin-top: 50px;
+	margin-bottom: 50px;
+
+}
+
+.login-area h3{
+
+	text-align: center;
+	margin-bottom: 50px;
+
+}
+.login-area .form-group{
+
+	margin-left: 10px;
+	margin-right: 10px;
+
+}
+.login-area .login-button{
+
+	text-align: center;
+	margin-top: 50px;
+
+}
+.login-area label{
+	font-weight: bold;
+}
