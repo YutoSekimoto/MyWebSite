@@ -1,0 +1,26 @@
+body{
+	width: 1000px;
+	margin: auto;
+}
+
+
+.header{
+	border: 1px solid black;
+}
+.header .login-info{
+	text-align: right;
+}
+
+.wrapper{
+	border: 1px solid black;
+	text-align: center;
+}
+.wrapper .ItemSearch{
+	border-radius: 10px;
+	width: 500px;
+}
+
+
+.footer{
+	border: 1px solid black;
+}}
