@@ -1,0 +1,16 @@
+body {
+    width: 1000px;
+    margin: 0 auto;
+}
+
+.wrapper {
+    margin: 0 auto;
+    border: 1px solid black;
+    border-radius: 10px;
+    text-align: center;
+    padding: 20px;
+}
+
+.wrapper .form-group {
+    text-align: left;
+}

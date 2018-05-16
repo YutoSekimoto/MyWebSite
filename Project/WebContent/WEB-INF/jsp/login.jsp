@@ -1,33 +1,47 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
+
 <head>
-<meta charset="UTF-8">
-<title>ログイン</title>
-<link rel="stylesheet" href="css/bootstrap.min.css">
+    <meta charset="utf-8">
+    <title>ログイン</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/User/login.css">
 </head>
+
 <body>
 
-<div class = "wrapper">
+    <div class="wrapper">
 
-<h1>ログイン画面</h1><br>
+    <c:if test="${eM != null}">
 
-  <div class = "login_form">
+    <div class="alert alert-danger" role="alert">
+    <c:out value="${eM}" />
+    </div>
 
-    <form action = "" method = "post">
-      <small>ログインID</small><br>
-      <input type = "text" name = "name"><br><br>
-      <small>パスワード</small><br>
-      <input type = "password" name = "password"><br><br>
+    </c:if>
 
-      <input type = "submit" value = "ログイン">
-    </form>
+        <h1>ログイン</h1>
 
-  </div>
-  <br><br>
+        <div class="form-login">
 
-<a href = "">戻る</a>
-</div>
+            <form action="LoginServlet" method="post">
+                <div class="form-group">
+                    <label for="exampleInputLoginid">ログインID</label>
+                    <input type="text" class="form-control" id="exampleInputLoginid" placeholder="LoginId" name="loginid">
+                </div>
+                <div class="form-group">
+                    <label for="exampleInputPassword1">パスワード</label>
+                    <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password" name="password">
+                </div>
+                <button type="submit" class="btn btn-primary">ログイン</button>
+            </form>
 
+        </div>
+
+    </div>
 
 </body>
+
 </html>

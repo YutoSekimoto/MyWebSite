@@ -1,49 +1,47 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+
 <!DOCTYPE html>
 <html>
+
 <head>
-<meta charset="UTF-8">
-<title>商品一覧</title>
-<link rel="stylesheet" href="css/bootstrap.min.css">
+    <meta charset="utf-8">
+    <title>商品検索</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/Item/ItemList.css">
 </head>
+
 <body>
 
-<div class = "header">
-ヘッダー<br>
-  <div class = "search_form">
+    <div class="wrapper">
 
-    <form action = "" method = "post">
-    <input type = "text" name = "itemSearch">
-    <input type = "submit" value = "検索">
-    </form>
+        <div class="search-info">
 
-  </div>
+            ◯◯◯の検索結果…
 
-</div>
+        </div>
+        <br>
 
-<div class = "wrapperr">
+        <div class="item-list">
 
-<h1>商品一覧</h1><br>
+            <ul>
 
- <div class = "item_list">
+            <c:forEach var="item" items="${itemList}">
+                <li>
+                    <a href="ItemDetailServlet?id=<c:out value="${item.id}" />"><img src="img/<c:out value="${item.file}" />"></a>
+                    <br><br>
+                    <a href="ItemDetailServlet?id=<c:out value="${item.id}" />"><c:out value="${item.name}" /></a>
+                    <br>
+                    価格：<a href="ItemDetailServlet?id=<c:out value="${item.id}" />"><c:out value="${item.price}" />円</a>
+                </li>
+            </c:forEach>
 
-   <div class = "item_one">
-     <p>
-     繰り返し<br>
-     <a href = "">画像　：画像</a><br>
-     <a href = "">商品名：商品名</a><br>
-     <a href = "">値段　：2000円</a><br>
-     </p>
-   </div>
+            </ul>
 
- </div>
+        </div>
 
-</div>
-<br><br>
-
-<div class = "footer">
-フッター
-</div>
-
+    </div>
 
 </body>
+
 </html>

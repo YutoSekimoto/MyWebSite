@@ -6,9 +6,9 @@
 
 <head>
     <meta charset="utf-8">
-    <title>商品詳細</title>
+    <title>管理者/商品詳細</title>
     <link rel="stylesheet" href="css/bootstrap.min.css">
-    <link rel="stylesheet" href="css/Item/ItemDetail.css">
+    <link rel="stylesheet" href="css/Manager/ItemManagerDetail.css">
 </head>
 
 <body>
@@ -20,17 +20,8 @@
             <div class="float-left">
                 <p><img src="img/<c:out value="${item.file}" />"></p>
 
-                <div class="price-add">
-                    <p>
-                        価格<br><c:out value="${item.price}" />円
-                        <br><br>
-                        <form action="" method="post">
-                            <input type="hidden" name="id" value="<c:out value="${item.id}" />">
-                            個数：<input type="number" name="number" max="9" min="1" required>
-                            <input type="submit" value="カートに追加">
-                        </form>
-                    </p>
-                </div>
+                <p>価格<br><c:out value="${item.price}" />円<br></p>
+
             </div>
 
 

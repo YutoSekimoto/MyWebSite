@@ -1,0 +1,68 @@
+body {
+    width: 1000px;
+    margin: 0 auto;
+}
+
+.wrapper h1{
+	text-align: center;
+}
+.wrapper .search-info {
+    text-align: right;
+    border: 1px solid black;
+    padding: 50px;
+}
+
+.wrapper .item-list ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.wrapper .li {
+    overflow: hidden;
+    padding-bottom: 25px;
+    margin-bottom: 25px;
+    border-bottom: 1px solid black;
+}
+
+.wrapper .item-list img {
+    width: 250px;
+    height: 150px;
+    float: left;
+    object-fit: contain;
+}
+
+.wrapper .space{
+	width: 250px;
+    height: 150px;
+    float: left;
+    text-align: center;
+}
+
+.wrapper .title-price {
+    width: 500px;
+    height: 150px;
+    margin-left: 25px;
+    margin-right: 25px;
+    float: left;
+    text-align: center;
+}
+
+.wrapper .form-operate {
+    width: 200px;
+    height: 150px;
+    float: left;
+    text-align: center;
+    border-bottom: 1px solid black;
+}
+
+.wrapper .clear {
+    clear: both;
+}
+
+.buy{
+	width: 200px;
+    height: 150px;
+    float: right;
+    text-align: center;
+}
