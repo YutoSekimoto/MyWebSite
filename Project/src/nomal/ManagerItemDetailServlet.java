@@ -8,35 +8,21 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
-import beans.UserBeans;
-import dao.UserDao;
+import beans.ItemBeans;
+import dao.ItemDao;
 
-@WebServlet("/UserDetailServlet")
-public class UserDetailServlet extends HttpServlet {
+@WebServlet("/ManagerItemDetailServlet")
+public class ManagerItemDetailServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
-	public UserDetailServlet() {
+	public ManagerItemDetailServlet() {
 		super();
 	}
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-		//HttpSessionインスタンスの取得
-		HttpSession session = request.getSession();
-
 		try {
-
-			//ユーザーセッションスコープの確認
-			UserBeans userSession = (UserBeans)session.getAttribute("usersession");
-			if(userSession == null) {
-
-				//ログイン画面へリダイレクト
-				response.sendRedirect("LoginServlet");
-				return;
-
-			}
 
 			//ゲットパラメータを取得
 			String id = request.getParameter("id");
@@ -47,31 +33,30 @@ public class UserDetailServlet extends HttpServlet {
 			try {
 				numberId = Integer.parseInt(id);
 			} catch (NumberFormatException nfex) {
-				//ユーザーリストへリダイレクト
-				response.sendRedirect("UserListServlet");
+				//管理者商品リストへリダイレクト
+				response.sendRedirect("ManagerItemSearchListServlet");
 				return;
 			}
 
 			//データベース操作
-			UserDao userDao = new UserDao();
-			//ユーザーインスタンス作成
-			UserBeans userDetail = userDao.UserSearchId(numberId);
+			ItemDao itemDao = new ItemDao();
+			//IDから商品を取得
+			ItemBeans item = itemDao.ItemIdSearch(numberId);
 
-			//ユーザーインスタンス取得成功
-			if(userDetail != null) {
+			if(item != null) {//成功
 
 				//リクエストスコープにセット
-				request.setAttribute("userDetail", userDetail);
+				request.setAttribute("item", item);
 
 				//フォワード
-				RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/UserDetail.jsp");
+				RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/ManagerItemDetail.jsp");
 				dispatcher.forward(request, response);
 				return;
 
-			}else {
+			}else {//失敗
 
-				//ユーザーリストへリダイレクト
-				response.sendRedirect("UserListServlet");
+				//管理者商品リストへリダイレクト
+				response.sendRedirect("ManagerItemSearchListServlet");
 				return;
 
 			}
@@ -84,9 +69,6 @@ public class UserDetailServlet extends HttpServlet {
 
 	}
 
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
-	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		doGet(request, response);
 	}

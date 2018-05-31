@@ -3,14 +3,17 @@ body {
 	margin: 0 auto;
 }
 
-.wrapper h1 {
+.wrapper .form-search a {
+	display: block;
+	text-align: right;
+}
+
+.wrapper {
 	text-align: center;
 }
 
-.wrapper .search-info {
-	text-align: right;
-	border: 1px solid black;
-	padding: 50px;
+.wrapper .form-group {
+	text-align: left;
 }
 
 .wrapper .item-list ul {
@@ -33,27 +36,15 @@ body {
 	object-fit: contain;
 }
 
-.wrapper .space {
-	width: 250px;
-	height: 150px;
-	float: left;
-	text-align: center;
-}
-
 .wrapper .title-price {
 	width: 500px;
 	height: 150px;
 	margin-left: 25px;
 	margin-right: 25px;
 	float: left;
-	text-align: center;
 }
 
-.wrapper .title-price form {
-	display: inline;
-}
-
-.wrapper .form-operate {
+.wrapper .link-operate {
 	width: 200px;
 	height: 150px;
 	float: left;
@@ -62,11 +53,4 @@ body {
 
 .wrapper .clear {
 	clear: both;
-}
-
-.buy {
-	width: 200px;
-	height: 150px;
-	float: right;
-	text-align: center;
 }

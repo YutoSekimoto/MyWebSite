@@ -1,7 +1,6 @@
 package nomal;
 
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.util.ArrayList;
 
 import javax.servlet.RequestDispatcher;
@@ -13,105 +12,174 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import beans.ItemBeans;
+import beans.UserBeans;
 import dao.ItemDao;
 
-/**
- * Servlet implementation class ItemDetailServlet
- */
 @WebServlet("/ItemDetailServlet")
 public class ItemDetailServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
-    public ItemDetailServlet() {
-        super();
-        // TODO Auto-generated constructor stub
-    }
-
-	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
-	 */
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		//response.getWriter().append("Served at: ").append(request.getContextPath());
-
-		//リクエストパラーメータを取得
-		String id = request.getParameter("id");
-
-		//ID文字列を数値に変換
-		int numberId = Integer.parseInt(id);
-
-		//データベース操作　
-		ItemDao itemDao =  new ItemDao();
-		ItemBeans item = itemDao.ItemIdSearch(numberId);
-
-		//リクエストスコープにセット
-		request.setAttribute("item", item);
-
-		//フォワード
-		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/ItemDetail.jsp");
-	    dispatcher.forward(request, response);
-		return;
-
+	public ItemDetailServlet() {
+		super();
 	}
 
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
-	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		//doGet(request, response);
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-		//レスポンス
-		response.setContentType("text/html; charset=UTF-8");
-		PrintWriter out = response.getWriter();
+		//HttpSessionインスタンスの取得
+		HttpSession session = request.getSession();
 
-		//リクエストパラメーターの文字コードを指定
-		request.setCharacterEncoding("UTF-8");
+		try {
 
-		//リクエストパラメータを取得
-		String id = request.getParameter("id");
-		String number = request.getParameter("number");
+			//ユーザーセッションスコープの有無を確認
+			UserBeans userSession = (UserBeans)session.getAttribute("usersession");
+			if(userSession == null) {
 
-		if(!(id.equals("")) && !(number.equals(""))) {
-
-			//ID文字列を数値に変換
-			int numberId = Integer.parseInt(id);
-			int numberNumber = Integer.parseInt(number);
-
-			//データベース操作
-			ItemDao itemDao = new ItemDao();
-			ItemBeans Item = itemDao.ItemIdSearch(numberId);
-
-			//購入個数をセット
-			Item.setNumber(numberNumber);
-
-			//HttpSessionインスタンスの取得
-			HttpSession session = request.getSession();
-
-			ArrayList<ItemBeans> sItemList = (ArrayList<ItemBeans>) session.getAttribute("sItemList");
-
-			//商品カートセッションがnullの場合
-			if(sItemList == null) {
-
-				//商品カートセッションススコープに保存するコレクションインスタンス
-				sItemList = new ArrayList<ItemBeans>();
+				//ログイン画面へリダイレクト
+				response.sendRedirect("LoginServlet");
+				return;
 
 			}
 
-			//コレクションスコープにインスタンスを追加
-			sItemList.add(Item);
+			//ゲットパラメータを取得
+			String id = request.getParameter("id");
 
-			//セッションスコープにインスタンスを保存
-			session.setAttribute("sItemList", sItemList);
+			//ゲットパラメータを数値に変換
+			int numberId = 0;
+			//数値への変換
+			try {
+				numberId = Integer.parseInt(id);
+			} catch (NumberFormatException nfex) {
+				//商品リストへリダイレクト
+				response.sendRedirect("ItemListServlet");
+				return;
+			}
 
-			//商品カートリストへリダイレクト
-			response.sendRedirect("ItemCartListServlet");
+			//データベース操作
+			ItemDao itemDao =  new ItemDao();
+			//IDから商品を取得
+			ItemBeans item = itemDao.ItemIdSearch(numberId);
 
-			out.println(sItemList);
+			//リクエストスコープにセット
+			request.setAttribute("item", item);
 
+			//フォワード
+			RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/ItemDetail.jsp");
+			dispatcher.forward(request, response);
+			return;
+
+		}catch (Exception e) {
+			//エラーページへリダイレクト
+			response.sendRedirect("ErrorServlet");
+			return;
+		}
+
+
+
+	}
+
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
+		//HttpSessionインスタンスの取得
+		HttpSession session = request.getSession();
+
+		try {
+
+			//ユーザーセッションスコープの有無を確認
+			UserBeans userSession = (UserBeans)session.getAttribute("usersession");
+			if(userSession == null) {
+
+				//ログイン画面へリダイレクト
+				response.sendRedirect("LoginServlet");
+				return;
+
+			}
+
+			//リクエストパラメーターの文字コードを指定
+			request.setCharacterEncoding("UTF-8");
+
+			//リクエストパラメータを取得
+			String id = request.getParameter("id");
+			String number = request.getParameter("number");
+
+			if(!(id.equals("")) && !(number.equals(""))) {
+
+				//ゲットパラメータを数値に変換
+				int numberId = 0;
+				int numberNumber = 0;
+
+				//取得に失敗
+				if(!(id.equals("")) && !(number.equals(""))) {
+
+					//数値への変換
+					try {
+						numberId = Integer.parseInt(id);
+						numberNumber = Integer.parseInt(number);
+					} catch (NumberFormatException nfex) {
+						//商品リストへリダイレクト
+						response.sendRedirect("ItemListServlet");
+						return;
+					}
+
+				}
+
+				//データベース操作
+				ItemDao itemDao = new ItemDao();
+				//IDから商品を取得
+				ItemBeans Item = itemDao.ItemIdSearch(numberId);
+
+				//購入個数をセット
+				Item.setNumber(numberNumber);
+
+				//商品カートセッションを取得
+				@SuppressWarnings("unchecked")
+				ArrayList<ItemBeans> sItemList = (ArrayList<ItemBeans>) session.getAttribute("sItemList");
+
+				//商品カートセッションがnullの場合
+				if(sItemList == null) {
+
+					//商品カートセッションススコープに保存するコレクションインスタンスを作成
+					sItemList = new ArrayList<ItemBeans>();
+
+				}
+
+				//商品カートに既に同じ商品が入っているのか確認
+				for(ItemBeans sItem : sItemList) {
+
+					//商品カートに既に同じ商品が入っているのか場合
+					if(sItem.getId() == Item.getId()) {
+
+						//個数を追加
+						sItem.setNumber(sItem.getNumber() + Item.getNumber());
+
+						//商品カートリストへリダイレクト
+						response.sendRedirect("ItemCartListServlet");
+						return;
+
+					}
+
+				}
+
+				//商品カートに商品を追加
+				sItemList.add(Item);
+
+				//セッションスコープにインスタンスを保存
+				session.setAttribute("sItemList", sItemList);
+
+				//商品カートリストへリダイレクト
+				response.sendRedirect("ItemCartListServlet");
+
+			}else {
+
+				//商品リストへリダイレクト
+				response.sendRedirect("ItemListServlet");
+				return;
+
+			}
+
+		}catch (Exception e) {
+			//エラーページへリダイレクト
+			response.sendRedirect("ErrorServlet");
+			return;
 		}
 
 	}

@@ -1,52 +1,60 @@
 body {
-    width: 1000px;
-    margin: 0 auto;
+	width: 1000px;
+	margin: 0 auto;
 }
 
 .wrapper h1 {
-    text-align: center;
+	text-align: center;
 }
 
 .wrapper .item-list ul {
-    list-style: none;
-    margin: 0;
-    padding: 0;
+	list-style: none;
+	margin: 0;
+	padding: 0;
 }
 
-.wrapper .li {
-    overflow: hidden;
-    padding-bottom: 25px;
-    margin-bottom: 25px;
-    border-bottom: 1px solid black;
+.wrapper li {
+	overflow: hidden;
+	padding-bottom: 25px;
+	margin-bottom: 25px;
+	border-bottom: 1px solid black;
 }
 
 .wrapper .item-list img {
-    width: 500px;
-    height: 150px;
-    float: left;
-    object-fit: contain;
+	width: 500px;
+	height: 150px;
+	float: left;
+	object-fit: contain;
+}
+
+.wrapper .delivery-name {
+	width: 500px;
+	height: 150px;
+	float: left;
+	text-align: center;
 }
 
 .wrapper .title-price {
-    width: 500px;
-    height: 150px;
-    float: left;
+	width: 500px;
+	height: 150px;
+	float: left;
 }
 
 .wrapper .delivery-price {
-    width: 500px;
-    height: 150px;
-    float: right;
+	width: 500px;
+	height: 150px;
+	float: right;
 }
 
 .wrapper .clear {
-    clear: both;
+	clear: both;
 }
 
 .wrapper .buy-confirm {
-    text-align: center;
+	text-align: center;
 }
-.wrapper .table{
-    border-bottom: 1px solid black;
-    text-align: center;
+
+.wrapper .table {
+	border-bottom: 1px solid black;
+	text-align: center;
 }

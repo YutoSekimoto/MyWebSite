@@ -1,16 +1,23 @@
 body {
-    width: 1000px;
-    margin: 0 auto;
+	width: 1000px;
+	margin: 0 auto;
 }
 
 .wrapper {
-    margin: 0 auto;
-    border: 1px solid black;
-    border-radius: 10px;
-    text-align: center;
-    padding: 20px;
+	margin: 0 auto;
+	text-align: center;
+	padding: 20px;
 }
 
 .wrapper .form-group {
-    text-align: left;
+	text-align: left;
+}
+
+.wrapper .form-search {
+	border-bottom: 1px solid black;
+	padding-bottom: 50px;
+}
+
+.wrapper .table-list {
+	padding-top: 50px;
 }

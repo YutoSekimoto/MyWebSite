@@ -1,5 +1,8 @@
 package beans;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 public class BuyBeans {
 
 	//フィールド
@@ -7,7 +10,8 @@ public class BuyBeans {
 	private int useId;
 	private int price;
 	private int deliveryId;
-	private String createDate;
+	private Date createDate;
+	private String formatDate;
 	private String deliveryMethod;
 	private int deliveryPrice;
 
@@ -36,11 +40,19 @@ public class BuyBeans {
 	public void setDeliveryId(int deliveryId) {
 		this.deliveryId = deliveryId;
 	}
-	public String getCreateDate() {
+	public Date getCreateDate() {
 		return createDate;
 	}
-	public void setCreateDate(String createDate) {
+	public void setCreateDate(Date createDate) {
 		this.createDate = createDate;
+	}
+	public String getFormatDate() {
+		return formatDate;
+	}
+	public void setFormatDate(Date formatDate) {
+		SimpleDateFormat format = new SimpleDateFormat("yyyy年MM月dd日 kk時mm分ss秒");
+		String stringFormatDate = format.format(formatDate);
+		this.formatDate = stringFormatDate;
 	}
 	public String getDeliveryMethod() {
 		return deliveryMethod;

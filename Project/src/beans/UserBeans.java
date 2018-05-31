@@ -8,6 +8,7 @@ public class UserBeans {
 	private String password;
 	private String name;
 	private String email;
+	private String address;
 	private String birthDate;
 	private String createDate;
 	private String updateDate;
@@ -26,13 +27,14 @@ public class UserBeans {
 
 	}
 	//全ての値をセットするコンストラクタ(ユーザーログイン)
-	public UserBeans(int id , String loginid , String password , String name , String email , String birthdate , String createdate , String updatedate) {
+	public UserBeans(int id , String loginid , String password , String name , String email , String address , String birthdate , String createdate , String updatedate) {
 
 		this.id = id;
 		this.loginId = loginid;
 		this.password = password;
 		this.name = name;
 		this.email = email;
+		this.address = address;
 		this.birthDate = birthdate;
 		this.createDate = createdate;
 		this.updateDate = updatedate;
@@ -70,6 +72,12 @@ public class UserBeans {
 	public void setEmail(String email) {
 		this.email = email;
 	}
+	public String getAddress() {
+		return address;
+	}
+	public void setAddress(String address) {
+		this.address = address;
+	}
 	public String getBirthDate() {
 		return birthDate;
 	}
@@ -88,6 +96,7 @@ public class UserBeans {
 	public void setUpdateDate(String updateDate) {
 		this.updateDate = updateDate;
 	}
+
 
 
 

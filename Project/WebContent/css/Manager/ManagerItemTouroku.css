@@ -3,11 +3,20 @@ body {
 	margin: 0 auto;
 }
 
-.wrapper h1 {
+.wrapper {
 	text-align: center;
 }
 
-.wrapper .price-add {
+.wrapper .eM{
+	font-weight: bold;
+	padding: 30px;
+}
+
+.wrapper .form-group {
+	text-align: left;
+}
+
+.wrapper .float-left p {
 	text-align: center;
 }
 

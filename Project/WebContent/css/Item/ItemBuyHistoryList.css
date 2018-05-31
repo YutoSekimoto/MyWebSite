@@ -1,11 +1,12 @@
 body {
-    width: 1000px;
-    margin: 0 auto;
+	width: 1000px;
+	margin: 0 auto;
 }
 
 .wrapper h1 {
-    text-align: center;
+	text-align: center;
 }
-.wrapper .table{
-    text-align: center;
+
+.wrapper .table {
+	text-align: center;
 }

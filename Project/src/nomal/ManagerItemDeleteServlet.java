@@ -8,35 +8,21 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
-import beans.UserBeans;
-import dao.UserDao;
+import beans.ItemBeans;
+import dao.ItemDao;
 
-@WebServlet("/UserDeleteServlet")
-public class UserDeleteServlet extends HttpServlet {
+@WebServlet("/ManagerItemDeleteServlet")
+public class ManagerItemDeleteServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
-	public UserDeleteServlet() {
+	public ManagerItemDeleteServlet() {
 		super();
 	}
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-		//HttpSessionインスタンスの取得
-		HttpSession session = request.getSession();
-
 		try {
-
-			//セッションスコープの有無を確認
-			UserBeans userSession = (UserBeans)session.getAttribute("usersession");
-			if(userSession == null) {
-
-				//ログイン画面へリダイレクト
-				response.sendRedirect("LoginServlet");
-				return;
-
-			}
 
 			//ゲットパラメータを取得
 			String id = request.getParameter("id");
@@ -47,35 +33,33 @@ public class UserDeleteServlet extends HttpServlet {
 			try {
 				numberId = Integer.parseInt(id);
 			} catch (NumberFormatException nfex) {
-				//ユーザーリストへリダイレクト
-				response.sendRedirect("UserListServlet");
+				//管理者商品リストへリダイレクト
+				response.sendRedirect("ManagerItemSearchListServlet");
 				return;
 			}
 
 			//データベース操作
-			UserDao userDao = new UserDao();
-			//ユーザーインスタンス作成
-			UserBeans userDetail = userDao.UserSearchId(numberId);
+			ItemDao itemDao = new ItemDao();
+			//IDから商品を取得
+			ItemBeans item = itemDao.ItemIdSearch(numberId);
 
-			//ユーザーインスタンス取得成功
-			if(userDetail != null) {
+			if(item != null) {//成功
 
 				//リクエストスコープにセット
-				request.setAttribute("userDetail", userDetail);
+				request.setAttribute("item", item);
 
 				//フォワード
-				RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/UserDelete.jsp");
+				RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/ManagerItemDelete.jsp");
 				dispatcher.forward(request, response);
 				return;
 
-			}else {
+			}else {//失敗
 
-				//ユーザーリストへリダイレクト
-				response.sendRedirect("UserListServlet");
+				//管理者商品リストへリダイレクト
+				response.sendRedirect("ManagerItemSearchListServlet");
 				return;
 
 			}
-
 
 		}catch (Exception e) {
 			//エラーページへリダイレクト
@@ -89,6 +73,11 @@ public class UserDeleteServlet extends HttpServlet {
 
 		try {
 
+
+			//リクエストパラメーターの文字コードを指定
+			request.setCharacterEncoding("UTF-8");
+
+			//ゲットパラメータを取得
 			String id = request.getParameter("id");
 
 			//ゲットパラメータを数値に変換
@@ -97,32 +86,33 @@ public class UserDeleteServlet extends HttpServlet {
 			try {
 				numberId = Integer.parseInt(id);
 			} catch (NumberFormatException nfex) {
-				//ユーザーリストへリダイレクト
-				response.sendRedirect("UserListServlet");
+				//管理者商品リストへリダイレクト
+				response.sendRedirect("ManagerItemSearchListServlet");
 				return;
 			}
 
 			//データベース操作
-			UserDao userDao = new UserDao();
-			String message = userDao.UserDelete(numberId);
+			ItemDao itemDao = new ItemDao();
+			//IDから商品を削除
+			String message = itemDao.ItemDelete(numberId);
 
-			if(message != null) {//削除成功
+			if(message != null) {//成功
 
-				//エラーメッセージをセット
+				//リクエストスコープにセット
 				request.setAttribute("eM", "削除しました");
 
 				//フォワード
-				RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/UserDelete.jsp");
+				RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/ManagerItemDelete.jsp");
 				dispatcher.forward(request, response);
 				return;
 
-			}else {//削除失敗
+			}else {//失敗
 
-				//エラーメッセージをセット
+				//リクエストスコープにセット
 				request.setAttribute("eM", "削除に失敗しました");
 
 				//フォワード
-				RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/UserDelete.jsp");
+				RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/ManagerItemDelete.jsp");
 				dispatcher.forward(request, response);
 				return;
 
@@ -133,6 +123,7 @@ public class UserDeleteServlet extends HttpServlet {
 			response.sendRedirect("ErrorServlet");
 			return;
 		}
+
 
 	}
 

@@ -3,11 +3,22 @@ body {
 	margin: 0 auto;
 }
 
-.wrapper h1 {
+.wrapper {
 	text-align: center;
 }
 
-.wrapper .price-add {
+.wrapper .item-result {
+	text-align: center;
+	padding: 50px;
+	margin: 100px;
+	border: 1px solid black;
+}
+
+.wrapper .form-group {
+	text-align: left;
+}
+
+.wrapper .float-left p {
 	text-align: center;
 }
 

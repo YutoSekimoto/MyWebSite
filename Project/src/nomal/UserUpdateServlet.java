@@ -1,7 +1,6 @@
 package nomal;
 
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -17,146 +16,197 @@ import javax.servlet.http.HttpSession;
 import beans.UserBeans;
 import dao.UserDao;
 
-/**
- * Servlet implementation class UserUpdateServlet
- */
 @WebServlet("/UserUpdateServlet")
 public class UserUpdateServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
-    public UserUpdateServlet() {
-        super();
-        // TODO Auto-generated constructor stub
-    }
+	public UserUpdateServlet() {
+		super();
+	}
 
-	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
-	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		//response.getWriter().append("Served at: ").append(request.getContextPath());
 
 		//HttpSessionインスタンスの取得
 		HttpSession session = request.getSession();
-		//セッションスコープの有無を確認
-		UserBeans userSession = (UserBeans)session.getAttribute("usersession");
-		if(userSession == null) {
 
-			//リダイレクト(ユーザーリスト)
-			response.sendRedirect("LoginServlet");
+		try {
+
+			//セッションスコープの有無を確認
+			UserBeans userSession = (UserBeans)session.getAttribute("usersession");
+			if(userSession == null) {
+
+				//ログイン画面へリダイレクト
+				response.sendRedirect("LoginServlet");
+				return;
+
+			}
+
+			//ゲットパラメータを取得
+			String id = request.getParameter("id");
+
+			//ゲットパラメータを数値に変換
+			int numberId = 0;
+			//数値への変換
+			try {
+				numberId = Integer.parseInt(id);
+			} catch (NumberFormatException nfex) {
+				//ユーザーリストへリダイレクト
+				response.sendRedirect("UserListServlet");
+				return;
+			}
+
+			//データベース操作
+			UserDao userDao = new UserDao();
+			//ユーザーインスタンス作成
+			UserBeans userDetail = userDao.UserSearchId(numberId);
+
+			//ユーザーインスタンス取得成功
+			if(userDetail != null) {
+
+				//リクエストスコープにセット
+				request.setAttribute("userDetail", userDetail);
+
+				//フォワード
+				RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/UserUpdate.jsp");
+				dispatcher.forward(request, response);
+				return;
+
+			}else {
+
+				//ユーザーリストへリダイレクト
+				response.sendRedirect("UserListServlet");
+				return;
+
+			}
+
+		}catch (Exception e) {
+			//エラーページへリダイレクト
+			response.sendRedirect("ErrorServlet");
 			return;
-
 		}
-
-		//ゲットパラメータを取得し数値に変換
-		String id = request.getParameter("id");
-		int numberId = Integer.parseInt(id);
-
-		//データベース操作
-		UserDao userDao = new UserDao();
-		UserBeans userDetail = userDao.UserSearchId(numberId);
-
-		//リクエストスコープにセット
-		request.setAttribute("userDetail", userDetail);
-
-		//フォワード
-		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/UserUpdate.jsp");
-		dispatcher.forward(request, response);
-		return;
 
 	}
 
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
-	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		//doGet(request, response);
 
-		//レスポンス
-		response.setContentType("text/html; charset=UTF-8");
-		PrintWriter out = response.getWriter();
-
-		//リクエストパラメーターの文字コードを指定
-		request.setCharacterEncoding("UTF-8");
-
-		//リクエストパラメータ取得
-		String password1 = request.getParameter("password1");
-		String password2 = request.getParameter("password2");
-		String name = request.getParameter("name");
-		String birthDate = request.getParameter("birthDate");
-		//ゲットパラメータを取得し数値に変換
-		String id = request.getParameter("id");
-		int numberId = Integer.parseInt(id);
-
-		//日付設定
-		SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
-		String birthDateC = null;
 		try {
-			Date today = format.parse(birthDate);
-			birthDateC = format.format(today);
-		} catch (ParseException e) {
-			e.printStackTrace();
-		}
 
-		//未入力チェック
-		if(password1 == "" || password2 == "" || name == "" || birthDate == "") {
+
+			//リクエストパラメーターの文字コードを指定
+			request.setCharacterEncoding("UTF-8");
+
+			//リクエストパラメータ取得
+			String password1 = request.getParameter("password1");
+			String password2 = request.getParameter("password2");
+			String name = request.getParameter("name");
+			String address = request.getParameter("address");
+			String birthDate = request.getParameter("birthDate");
+			String id = request.getParameter("id");
+
+			//IDを数値に変換
+			int numberId = 0;
+			//数値への変換
+			try {
+				numberId = Integer.parseInt(id);
+			} catch (NumberFormatException nfex) {
+				//ユーザーリストへリダイレクト
+				response.sendRedirect("UserListServlet");
+				return;
+			}
+
+			//誕生日入力の確認
+			if(birthDate == "") {
+
+				//ユーザーリストへリダイレクト
+				response.sendRedirect("UserListServlet");
+				return;
+
+			}
+
+			//誕生日設定
+			SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
+			String birthDateFormat = null;
+			try {
+				Date birthDateDate = format.parse(birthDate);
+				birthDateFormat = format.format(birthDateDate);
+			} catch (ParseException e) {
+				//ユーザーリストへリダイレクト
+				response.sendRedirect("UserListServlet");
+				return;
+			}
+
+			//入力の確認
+			if(password1.equals("") || password2.equals("") || name.equals("") || address.equals("")|| birthDate.equals("")) {
+
+				//データベース操作
+				UserDao userDao = new UserDao();
+				UserBeans userDetail = userDao.UserSearchId(numberId);
+
+				//リクエストスコープにセット
+				request.setAttribute("userDetail", userDetail);
+
+				//エラーメッセージ
+				request.setAttribute("eM", "未入力の項目があります");
+
+				//フォワード
+				RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/UserUpdate.jsp");
+				dispatcher.forward(request, response);
+				return;
+
+			}
+
+			//パスワード比較
+			if(!(password1.equals(password2))){
+
+				//データベース操作
+				UserDao userDao = new UserDao();
+				UserBeans userDetail = userDao.UserSearchId(numberId);
+
+				//リクエストスコープにセット
+				request.setAttribute("userDetail", userDetail);
+
+				//エラーメッセージ
+				request.setAttribute("eM", "パスワードが一致しません");
+
+				//フォワード
+				RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/UserUpdate.jsp");
+				dispatcher.forward(request, response);
+				return;
+
+			}
 
 			//データベース操作
 			UserDao userDao = new UserDao();
-			UserBeans userDetail = userDao.UserSearchId(numberId);
+			//ユーザーアップデート
+			String message = userDao.UserUpdate(numberId , password1 , name , address , birthDateFormat) ;
 
-			//リクエストスコープにセット
-			request.setAttribute("userDetail", userDetail);
+			if(message != "") {//アップデート成功
 
-			//エラーメッセージ
-			request.setAttribute("eM", "未入力の項目があります");
+				//エラーメッセージ
+				request.setAttribute("rM", "更新しました");
 
-			//フォワード
-			RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/UserUpdate.jsp");
-			dispatcher.forward(request, response);
+				//フォワード
+				RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/UserUpdate.jsp");
+				dispatcher.forward(request, response);
+				return;
+
+			}else {//アップデート失敗
+
+				//エラーメッセージ
+				request.setAttribute("rM", "更新に失敗しました");
+
+				//フォワード
+				RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/UserUpdate.jsp");
+				dispatcher.forward(request, response);
+				return;
+
+			}
+
+		}catch (Exception e) {
+			//エラーページへリダイレクト
+			response.sendRedirect("ErrorServlet");
 			return;
-
 		}
-
-		//パスワード比較
-		if(!(password1.equals(password2))){
-
-			//データベース操作
-			UserDao userDao = new UserDao();
-			UserBeans userDetail = userDao.UserSearchId(numberId);
-
-			//リクエストスコープにセット
-			request.setAttribute("userDetail", userDetail);
-
-			//エラーメッセージ
-			request.setAttribute("eM", "パスワードが一致しません");
-
-			//フォワード
-			RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/UserUpdate.jsp");
-			dispatcher.forward(request, response);
-			return;
-
-		}
-
-		//データベース操作
-		UserDao userDao = new UserDao();
-		String message = userDao.UserUpdate(numberId, password1, name, birthDateC);
-
-		if(!(message == "")) {
-
-			//ユーザーリストへリダイレクト
-			response.sendRedirect("UserListServlet");
-
-		}
-
-		out.println(password1);
-		out.println(password2);
-		out.println(name);
-		out.println(birthDateC);
 
 	}
 
