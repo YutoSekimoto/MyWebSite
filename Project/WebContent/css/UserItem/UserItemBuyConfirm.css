@@ -1,0 +1,38 @@
+body {
+	width: 1000px;
+	margin: 0 auto;
+}
+
+.wrapper {
+	width: 1000px;
+	text-align: center;
+	margin-top: 50px;
+}
+
+.wrapper h1 {
+	text-align: center;
+}
+
+.wrapper .item-list img {
+	width: 450px;
+	margin-bottom: 50px;
+	height: 150px;
+	float: left;
+	object-fit: contain;
+}
+
+.wrapper .title-price {
+	width: 500px;
+	height: 150px;
+	float: right;
+}
+
+.wrapper .clear {
+	clear: both;
+}
+
+.wrapper .buy-confirm {
+	text-align: center;
+	border-top: 1px solid black;
+	padding-top: 50px;
+}

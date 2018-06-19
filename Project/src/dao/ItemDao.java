@@ -206,7 +206,7 @@ public class ItemDao {
 			//SELECT文を準備
 			String sql = "SELECT * FROM item WHERE price >= 0";
 
-			//条件式の追加s
+			//条件式の追加
 			if(!(name.equals(""))) {
 				sql += " AND name LIKE '%" + name + "%'";
 				sql += " OR name = '" + name + "'";
@@ -329,19 +329,39 @@ public class ItemDao {
 			conn = DBManager.getConnection();
 
 			//SELECT文を準備
-			String sql = "DELETE FROM item WHERE id = ?";
+			String sql1 = "SELECT file FROM item WHERE id = ?";
 
 			//PreparedStatementを準備
-			PreparedStatement pstmt = conn.prepareStatement(sql);
-			pstmt.setInt(1, id);
+			PreparedStatement pstmt1 = conn.prepareStatement(sql1);
+			pstmt1.setInt(1, id);
 
 			//PreparedStatementを実行
-			int records = pstmt.executeUpdate();
+			ResultSet rs = pstmt1.executeQuery();
+
+			String fileName = null;
+			//成功した場合
+			if(rs.next()) {
+
+				//ファイル名を取得
+				fileName = rs.getString("file");
+
+			}
+
+			//SELECT文を準備
+			String sql2 = "DELETE FROM item WHERE id = ?";
+
+			//PreparedStatementを準備
+			PreparedStatement pstmt2 = conn.prepareStatement(sql2);
+			pstmt2.setInt(1, id);
+
+			//PreparedStatementを実行
+			int records = pstmt2.executeUpdate();
 
 			//成功した場合
 			if(records != 0) {
 
-				return "成功";
+				//ファイル名をリターン
+				return fileName;
 
 			}
 
@@ -374,23 +394,42 @@ public class ItemDao {
 			conn = DBManager.getConnection();
 
 			//SELECT文を準備
-			String sql = "UPDATE item SET name = ? , detail = ? , price = ? , file = ? WHERE id = ?";
+			String sql1 = "SELECT file FROM item WHERE id = ?";
 
 			//PreparedStatementを準備
-			PreparedStatement pstmt = conn.prepareStatement(sql);
-			pstmt.setString(1, name);
-			pstmt.setString(2, detail);
-			pstmt.setInt(3, price);
-			pstmt.setString(4, imagefile);
-			pstmt.setInt(5, id);
+			PreparedStatement pstmt1 = conn.prepareStatement(sql1);
+			pstmt1.setInt(1, id);
 
 			//PreparedStatementを実行
-			int records = pstmt.executeUpdate();
+			ResultSet rs = pstmt1.executeQuery();
+
+			String fileName = null;
+			//成功した場合
+			if(rs.next()) {
+
+				//ファイル名を取得
+				fileName = rs.getString("file");
+
+			}
+
+			//SELECT文を準備
+			String sql2 = "UPDATE item SET name = ? , detail = ? , price = ? , file = ? WHERE id = ?";
+
+			//PreparedStatementを準備
+			PreparedStatement pstmt2 = conn.prepareStatement(sql2);
+			pstmt2.setString(1, name);
+			pstmt2.setString(2, detail);
+			pstmt2.setInt(3, price);
+			pstmt2.setString(4, imagefile);
+			pstmt2.setInt(5, id);
+
+			//PreparedStatementを実行
+			int records = pstmt2.executeUpdate();
 
 			//成功した場合
 			if(records != 0) {
 
-				return "成功";
+				return fileName;
 
 			}
 

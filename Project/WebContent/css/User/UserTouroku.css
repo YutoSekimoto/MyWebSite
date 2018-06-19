@@ -1,10 +1,5 @@
-body {
-	width: 1000px;
-	margin: 0 auto;
-}
-
 .wrapper {
-	width: 500px;
+	width: 1000px;
 	margin: 0 auto;
 	border: 1px solid black;
 	border-radius: 10px;

@@ -67,7 +67,7 @@ public class BuyDao {
 
 	}
 
-	//全ユーザーリストメソッド
+	//購入ユーザーID検索メソッド
 	public ArrayList<BuyBeans> BuyList(int userid) {
 
 		Connection conn = null;
@@ -86,7 +86,7 @@ public class BuyDao {
 			//PreparedStatementを実行
 			ResultSet rs = pstmt.executeQuery();
 
-			//ユーザーリストインスタンス生成
+			//購入リストインスタンス生成
 			ArrayList<BuyBeans> buyList = new ArrayList<BuyBeans>();
 
 			//レコードの内容を取得
@@ -104,7 +104,7 @@ public class BuyDao {
 
 			}
 
-			//ユーザーリストをリターン
+			//購入リストをリターン
 			return buyList;
 
 		} catch (SQLException e) {
@@ -124,7 +124,7 @@ public class BuyDao {
 
 	}
 
-	//全ユーザーリストメソッド
+	//購入ID検索メソッド
 	public BuyBeans BuyId(int id) {
 
 		Connection conn = null;

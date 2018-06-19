@@ -3,17 +3,28 @@ body {
 	margin: 0 auto;
 }
 
+.wrapper {
+	width: 1000px;
+	text-align: center;
+	margin-top: 50px;
+}
+
 .wrapper .form-search a {
 	display: block;
 	text-align: right;
 }
 
-.wrapper {
-	text-align: center;
+.wrapper .form-search {
+	border-bottom: 1px solid black;
+	padding-bottom: 50px;
 }
 
 .wrapper .form-group {
 	text-align: left;
+}
+
+.wrapper .item-list {
+	padding-top: 50px;
 }
 
 .wrapper .item-list ul {

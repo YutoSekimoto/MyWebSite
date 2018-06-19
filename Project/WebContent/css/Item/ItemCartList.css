@@ -3,6 +3,12 @@ body {
 	margin: 0 auto;
 }
 
+.wrapper {
+	width: 1000px;
+	text-align: center;
+	margin-top: 50px;
+}
+
 .wrapper h1 {
 	text-align: center;
 }
@@ -64,9 +70,13 @@ body {
 	clear: both;
 }
 
-.buy {
+.wrapper .buy {
 	width: 200px;
 	height: 150px;
 	float: right;
 	text-align: center;
+}
+
+.a-itemlist {
+	float: left;
 }

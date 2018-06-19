@@ -9,6 +9,7 @@ public class ItemBeans {
 	private int price;
 	private String file;
 	private int number;
+	private int userId;
 
 	//空のコンストラクタ
 	public ItemBeans() {}
@@ -59,6 +60,12 @@ public class ItemBeans {
 	}
 	public void setNumber(int number) {
 		this.number = number;
+	}
+	public int getUserId() {
+		return userId;
+	}
+	public void setUserId(int userId) {
+		this.userId = userId;
 	}
 
 

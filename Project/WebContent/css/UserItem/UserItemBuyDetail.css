@@ -1,0 +1,92 @@
+body {
+	width: 1000px;
+	margin: 0 auto;
+}
+
+.wrapper {
+	width: 1000px;
+	text-align: center;
+	margin-top: 50px;
+}
+
+.wrapper h1 {
+	text-align: center;
+}
+
+.wrapper .float-left {
+	float: left;
+	text-align: center;
+}
+
+.wrapper .float-left form {
+	display: inline;
+}
+
+.wrapper .comment-form {
+	float: left;
+	text-align: left;
+	margin-top: 50px;
+	margin-bottom: 50px;
+}
+
+.wrapper .comment-form textarea {
+	border-radius: 10px;
+	width: 800px;
+}
+
+.wrapper .comment-form form {
+	display: inline;
+}
+
+.wrapper #comment-list {
+	float: left;
+	width: 800px;
+	margin-top: 20px;
+	text-align: left;
+}
+
+.wrapper #comment-list {
+	float: left;
+	width: 800px;
+	margin-top: 20px;
+	text-align: left;
+}
+
+.wrapper #comment-list .name-date {
+	font-weight: bold;
+}
+
+.wrapper #comment-list .chat-comment {
+	border: 1px solid black;
+	border-radius: 10px;
+	padding: 30px;
+}
+
+.wrapper .comment {
+	border: 1px solid black;
+	border-radius: 10px;
+	padding: 30px;
+}
+
+.wrapper img {
+	height: 400px;
+	width: 400px;
+	margin-top: 75px;
+	margin-bottom: 25px;
+	object-fit: contain;
+}
+
+.wrapper .float-right {
+	width: 500px;
+	float: right;
+}
+
+.wrapper .float-right h4 {
+	text-align: center;
+	padding-bottom: 25px;
+}
+
+.wrapper .float-right p {
+	border-top: 1px solid black;
+	border-bottom: 1px solid black;
+}

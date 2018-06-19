@@ -27,5 +27,4 @@ public class BuyDetailBeans {
 		this.itemId = itemId;
 	}
 
-
 }

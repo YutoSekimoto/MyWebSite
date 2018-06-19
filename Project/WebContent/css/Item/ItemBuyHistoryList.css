@@ -3,10 +3,33 @@ body {
 	margin: 0 auto;
 }
 
+.wrapper {
+	width: 1000px;
+	text-align: center;
+	margin-top: 50px;
+}
+
 .wrapper h1 {
 	text-align: center;
 }
 
 .wrapper .table {
 	text-align: center;
+}
+
+.wrapper .item-history-list {
+	border-bottom: 1px solid black;
+	padding-bottom: 50px;
+}
+
+.wrapper .user-item-history-list {
+	border-bottom: 1px solid black;
+	padding-top: 50px;
+	padding-bottom: 50px;
+}
+
+.wrapper .user-item-history-list img {
+	object-fit: contain;
+	width: 150px;
+	height: 150px;
 }

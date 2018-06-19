@@ -4,10 +4,12 @@ body {
 }
 
 .wrapper {
+	width: 1000px;
 	text-align: center;
+	margin-top: 50px;
 }
 
-.wrapper .eM{
+.wrapper .eM {
 	font-weight: bold;
 	padding: 30px;
 }
@@ -41,4 +43,5 @@ body {
 .wrapper .float-right p {
 	border-top: 1px solid black;
 	border-bottom: 1px solid black;
+	text-align: left;
 }

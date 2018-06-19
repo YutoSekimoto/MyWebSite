@@ -6,6 +6,7 @@ public class DeliveryBeans {
 	private int id;
 	private String name;
 	private int price;
+	private int userId;
 
 	//アクセサメソッド
 	public int getId() {
@@ -25,6 +26,12 @@ public class DeliveryBeans {
 	}
 	public void setPrice(int price) {
 		this.price = price;
+	}
+	public int getUserId() {
+		return userId;
+	}
+	public void setUserId(int userId) {
+		this.userId = userId;
 	}
 
 }

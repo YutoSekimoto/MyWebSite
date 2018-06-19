@@ -1,0 +1,63 @@
+body {
+	width: 1000px;
+	margin: 0 auto;
+}
+
+.wrapper {
+	width: 1000px;
+	text-align: center;
+	margin-top: 50px;
+}
+
+.wrapper .search-info {
+	text-align: center;
+	border-bottom: 1px solid black;
+	padding-bottom: 50px;
+}
+
+.wrapper .search-info .name {
+	width: 380px;
+	border-radius: 5px;
+}
+
+.wrapper .search-info .submit {
+	border-radius: 5px;
+}
+
+.wrapper .search-info .price {
+	width: 100px;
+	border-radius: 5px;
+}
+
+.wrapper .item-list {
+	overflow: hidden;
+}
+
+.wrapper .item-list ul {
+	list-style: none;
+	margin: 0;
+	padding: 0;
+}
+
+.wrapper .item-list .eM {
+	text-align: center;
+}
+
+.wrapper .item-list li {
+	float: left;
+	width: 333px;
+	padding-top: 25px;
+	padding-bottom: 25px;
+	border-bottom: 1px solid black;
+	margin: 0;
+}
+
+.wrapper .item-list li:nth-child(3n) {
+	margin-right: 1px;
+}
+
+.wrapper .item-list img {
+	object-fit: contain;
+	width: 250px;
+	height: 300px;
+}

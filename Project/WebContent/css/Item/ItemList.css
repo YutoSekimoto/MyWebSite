@@ -3,6 +3,12 @@ body {
 	margin: 0 auto;
 }
 
+.wrapper {
+	width: 1000px;
+	text-align: center;
+	margin-top: 50px;
+}
+
 .wrapper .search-info {
 	text-align: center;
 	border-bottom: 1px solid black;
@@ -34,7 +40,13 @@ body {
 }
 
 .wrapper .item-list .eM {
+	width: 500px;
 	text-align: center;
+	border: 1px solid black;
+	border-radius: 10px;
+	padding: 20px;
+	margin: 0 auto;
+	margin-top: 50px;
 }
 
 .wrapper .item-list li {
