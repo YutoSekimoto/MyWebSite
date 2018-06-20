@@ -1,5 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
 <!DOCTYPE html>
@@ -22,7 +21,6 @@
 		<br> <br>
 
 		<c:choose>
-
 			<c:when test="${eM != null}">
 				<div class="item-result">
 					<c:out value="${eM}" />
@@ -31,37 +29,27 @@
 			</c:when>
 
 			<c:otherwise>
-
 				<div class="item-detail">
-
 					<div class="float-left">
-
 						<p>
 							<img src="img/<c:out value="${item.file}" />">
 						</p>
-
 						<p>
 							価格<br>
 							<c:out value="${item.price}" />
 							円
 						</p>
 						<br>
-
 						<p>
 							<strong>この商品を削除してもよろしいですか</strong>
 						</p>
-
 						<form action="ManagerItemDeleteServlet" method="post">
-							<input type="hidden" name="id"
-								value="<c:out value="${item.id}" />"> <a
-								href="ManagerItemSearchListServlet" class="btn btn-primary">キャンセル</a>
-							<input type="submit" class="btn btn-primary" value="削除する">
+							<input type="hidden" name="id" value="<c:out value="${item.id}" />"> <a href="ManagerItemSearchListServlet" class="btn btn-primary">キャンセル</a> <input type="submit"
+								class="btn btn-primary" value="削除する">
 						</form>
-
 					</div>
 
 					<div class="float-right">
-
 						<h4>
 							<c:out value="${item.name}" />
 						</h4>
@@ -70,13 +58,9 @@
 							<c:out value="${item.detail}" />
 							<br> <br>
 						</P>
-
 					</div>
-
 				</div>
-
 			</c:otherwise>
-
 		</c:choose>
 
 	</div>

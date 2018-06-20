@@ -1,5 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
 <!DOCTYPE html>
@@ -19,18 +18,15 @@
 	<div class="wrapper">
 
 		<c:if test="${eM != null}">
-
 			<div class="alert alert-danger" role="alert">
 				<c:out value="${eM}" />
 			</div>
-
 		</c:if>
 
 		<h1>管理者商品更新</h1>
 		<br> <br>
 
 		<c:choose>
-
 			<c:when test="${rM != null}">
 				<div class="item-result">
 					<c:out value="${rM}" />
@@ -39,42 +35,26 @@
 			</c:when>
 
 			<c:otherwise>
-
 				<div class="form-search">
-
-					<form action="ManagerItemUpdateServlet" method="post"
-						enctype="multipart/form-data">
+					<form action="ManagerItemUpdateServlet" method="post" enctype="multipart/form-data">
 						<div class="form-group">
-							<label for="exampleInputName">商品名</label> <input type="text"
-								class="form-control" id="exampleInputName" placeholder="Name"
-								value="<c:out value="${item.name}" />" name="name" required>
+							<label for="exampleInputName">商品名</label> <input type="text" class="form-control" id="exampleInputName" placeholder="Name" value="<c:out value="${item.name}" />" name="name" required>
 						</div>
 						<div class="form-group">
 							<label for="exampleInputDetail">詳細</label>
-							<textarea name="detail" class="form-control" rows="10"
-								id="exampleInputDetail" placeholder="Detail" name="detail"
-								required><c:out value="${item.detail}" /></textarea>
+							<textarea name="detail" class="form-control" rows="10" id="exampleInputDetail" placeholder="Detail" name="detail" required><c:out value="${item.detail}" /></textarea>
 						</div>
 						<div class="form-group">
-							<label for="exampleInputPrice">値段</label> <input type="number"
-								class="form-control" id="exampleInputPrice" placeholder="Price"
-								value="<c:out value="${item.price}" />" name="price" required>
+							<label for="exampleInputPrice">値段</label> <input type="number" class="form-control" id="exampleInputPrice" placeholder="Price" value="<c:out value="${item.price}" />" name="price" required>
 						</div>
 						<div class="form-group">
-							<label for="exampleInputImage">画像ファイル</label> <input type="file"
-								class="form-control" id="exampleInputImage" placeholder="Image"
-								value="<c:out value="${item.file}" />" name="imagefile" required>
+							<label for="exampleInputImage">画像ファイル</label> <input type="file" class="form-control" id="exampleInputImage" placeholder="Image" value="<c:out value="${item.file}" />" name="imagefile" required>
 						</div>
-						<input type="hidden" name="id"
-							value="<c:out value="${item.id}" />" name="id"> <a
-							href="ManagerItemSearchListServlet" class="btn btn-primary">キャンセル</a>
-						<input type="submit" class="btn btn-primary" value="更新">
+						<input type="hidden" name="id" value="<c:out value="${item.id}" />" name="id"> <a href="ManagerItemSearchListServlet" class="btn btn-primary">キャンセル</a> <input type="submit"
+							class="btn btn-primary" value="更新">
 					</form>
-
 				</div>
-
 			</c:otherwise>
-
 		</c:choose>
 
 	</div>

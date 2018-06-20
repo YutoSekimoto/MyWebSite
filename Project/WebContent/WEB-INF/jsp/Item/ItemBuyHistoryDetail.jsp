@@ -1,5 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
 <!DOCTYPE html>
@@ -22,9 +21,7 @@
 		<br> <br>
 
 		<div class="item-history-list">
-
 			<table class="table">
-
 				<thead>
 					<tr>
 						<th scope="col">配送方法</th>
@@ -40,22 +37,15 @@
 						<td><c:out value="${buy.formatDate}" /></td>
 					</tr>
 				</tbody>
-
 			</table>
-
 		</div>
 
 		<div class="item-list">
-
 			<ul>
-
 				<c:forEach var="item" items="${itemList}">
-					<li><a
-						href="ItemDetailServlet?id=<c:out value="${item.id}" />"><img
-							src="img/<c:out value="${item.file}" />"></a>
+					<li><a href="ItemDetailServlet?id=<c:out value="${item.id}" />"><img src="img/<c:out value="${item.file}" />"></a>
 						<div class="title-price">
-							タイトル： <a href="ItemDetailServlet?id=<c:out value="${item.id}" />"><c:out
-									value="${item.name}" /></a> <br> <br> 価格：
+							タイトル： <a href="ItemDetailServlet?id=<c:out value="${item.id}" />"><c:out value="${item.name}" /></a> <br> <br> 価格：
 							<c:out value="${item.price}" />
 							円 &nbsp;&nbsp;&nbsp;&nbsp;個数：
 							<c:out value="${item.number}" />
@@ -77,10 +67,8 @@
 						円
 					</div>
 				</li>
-
 			</ul>
 			<div class="clear"></div>
-
 		</div>
 
 		<a href="ItemBuyHistoryListServlet" class="a-itembuylist">・商品購入履歴リストへ</a>

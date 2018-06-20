@@ -1,5 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
 <!DOCTYPE html>
@@ -22,25 +21,19 @@
 		<br> <br>
 
 		<div class="item-detail">
-
 			<div class="float-left">
-
 				<p>
 					<img src="img/<c:out value="${item.file}" />">
 				</p>
-
 				<p>
 					価格<br>
 					<c:out value="${item.price}" />
 					円<br>
 				</p>
-				<br> <a href="ManagerItemSearchListServlet"
-					class="btn btn-primary">管理者商品リストへ</a>
-
+				<br> <a href="ManagerItemSearchListServlet" class="btn btn-primary">管理者商品リストへ</a>
 			</div>
 
 			<div class="float-right">
-
 				<h4>
 					<c:out value="${item.name}" />
 				</h4>
@@ -49,9 +42,7 @@
 					<c:out value="${item.detail}" />
 					<br> <br>
 				</P>
-
 			</div>
-
 		</div>
 
 	</div>

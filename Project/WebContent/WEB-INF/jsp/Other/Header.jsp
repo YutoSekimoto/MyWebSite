@@ -1,5 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ page import="beans.ItemBeans"%>
 <%@ page import="beans.UserBeans"%>
@@ -61,7 +60,7 @@
 	text-align: center;
 	padding: 20px;
 	margin-top: 80px;
-	width: 170px;
+	width: 155px;
 	border: 1px solid black;
 }
 
@@ -81,10 +80,8 @@
 	<div class="user">
 
 		<div class="user-detail">
-
 			<div class="log">
 				<c:choose>
-
 					<c:when test="${usersession != null}">
 						<c:out value="${usersession.name}" />/
                         <a href="LogoutServlet">ログアウト</a>
@@ -98,8 +95,7 @@
 			</div>
 
 			<div class="a">
-				<a href="UserListServlet">ユーザー管理画面</a><br> <a
-					href="ItemBuyHistoryListServlet">購入履歴</a>
+				<a href="UserListServlet">ユーザー管理画面</a><br> <a href="ItemBuyHistoryListServlet">購入履歴</a>
 			</div>
 
 
@@ -116,17 +112,15 @@
 			</c:if>
 
 			<div class="cart">
-
 				<%
-				//カートの個数変数を設定
+					//カートの個数変数を設定
 					int totalNumber = 0;
 				%>
 
-				<a href="ItemCartListServlet"> カート <c:if
-						test="${sItemList != null && !sItemList.isEmpty() && usersession != null}">
+				<a href="ItemCartListServlet"> カート <c:if test="${sItemList != null && !sItemList.isEmpty() && usersession != null}">
 						<%
-						//セッションスコープを取得
-							ArrayList<ItemBeans> jspItemList = (ArrayList<ItemBeans>) session.getAttribute("sItemList");
+							//セッションスコープを取得
+								ArrayList<ItemBeans> jspItemList = (ArrayList<ItemBeans>) session.getAttribute("sItemList");
 								UserBeans jspUser = (UserBeans) session.getAttribute("usersession");
 
 								//カートの個数を設定
@@ -141,21 +135,16 @@
 						%>
 
 					</c:if> <%=totalNumber%>個<img src="img/cart.png"></a>
-
 			</div>
-
 		</div>
 
 		<nav class="header-navi">
-
 			<ul>
 				<li><a href="IndexServlet">ホーム</a></li>
 				<li><a href="ItemListServlet">ストア</a></li>
 				<li><a href="UserItemBuySearchListServlet">フリーマケット</a></li>
 			</ul>
-
 		</nav>
-
 	</div>
 
 </div>

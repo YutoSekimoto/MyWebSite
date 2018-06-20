@@ -1,5 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ page import="beans.UserBeans"%>
 <%@ page import="beans.UserItemBeans"%>
@@ -34,21 +33,16 @@
 		<br> <br>
 
 		<div class="item-detail">
-
 			<div class="float-left">
 				<p>
 					<img src="img/<c:out value="${userItem.file}" />">
 				</p>
-
 				<p>
 					価格<br>
 					<c:out value="${userItem.price}" />
 					円<br>
 				</p>
-				<br> <a href="UserItemBuySearchListServlet"
-					class="btn btn-primary">フリーマーケット商品検索へ</a> <a
-					href="UserItemBuyConfirmServlet?id=<c:out value="${userItem.id}" />"
-					class="btn btn-primary">購入確認画面へ</a>
+				<br> <a href="UserItemBuySearchListServlet" class="btn btn-primary">フリーマーケット商品検索へ</a> <a href="UserItemBuyConfirmServlet?id=<c:out value="${userItem.id}" />" class="btn btn-primary">購入確認画面へ</a>
 			</div>
 			<br> <br>
 
@@ -68,19 +62,13 @@
 
 				<form action="" method="post">
 					<textarea name="comment" id="comment" required></textarea>
-					<br> <input type="submit" id="toukou" class="btn btn-dark"
-						value="投稿"> <input type="reset" class="btn btn-dark"
-						value="削除">
+					<br> <input type="submit" id="toukou" class="btn btn-dark" value="投稿"> <input type="reset" class="btn btn-dark" value="削除">
 				</form>
-
 				<input type="button" id="kousin" class="btn btn-dark" value="更新">
-
 			</div>
 
 			<div id="comment-list">
-
 				<c:forEach var="chat" items="${chatList}">
-
 					<div class="name-date">
 						<c:out value="${chat.name}" />
 						<c:out value="${chat.formatDate}" />
@@ -89,13 +77,9 @@
 					<div class="chat-comment">
 						<c:out value="${chat.comment}" />
 					</div>
-
 				</c:forEach>
-
 				<br>
-
 			</div>
-
 		</div>
 
 	</div>

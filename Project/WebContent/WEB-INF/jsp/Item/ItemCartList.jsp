@@ -1,5 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ page import="beans.ItemBeans"%>
 <%@ page import="beans.DeliveryBeans"%>
@@ -27,47 +26,31 @@
 		<br> <br>
 
 		<div class="item-list">
-
 			<ul>
-
 				<c:forEach var="sItem" items="${sItemList}">
-
 					<c:if test="${sItem.userId == usersession.id}">
-
-						<li><a
-							href="ItemDetailServlet?id=<c:out value="${sItem.id}" />"
-							class="gazou"><img src="img/<c:out value="${sItem.file}" />"></a>
-
+						<li><a href="ItemDetailServlet?id=<c:out value="${sItem.id}" />" class="gazou"><img src="img/<c:out value="${sItem.file}" />"></a>
 							<div class="title-price">
 								<h5>
-									<a href="ItemDetailServlet?id=<c:out value="${sItem.id}" />"
-										class="title"><c:out value="${sItem.name}" /></a>
+									<a href="ItemDetailServlet?id=<c:out value="${sItem.id}" />" class="title"><c:out value="${sItem.name}" /></a>
 								</h5>
 								<br> <br> 値段：
 								<c:out value="${sItem.price}" />
 								円 &nbsp;&nbsp;&nbsp;&nbsp; 個数：
-								<form action="ItemCartListServlet" method="post"
-									class="formNumber">
+								<form action="ItemCartListServlet" method="post" class="formNumber">
 									<select name="number" id="number" required>
-
 										<c:forEach var="i" begin="0" end="9" step="1">
 											<c:choose>
 												<c:when test="${i == sItem.number}">
-													<option value="<c:out value="${i}" />" selected><c:out
-															value="${i}" /></option>
+													<option value="<c:out value="${i}" />" selected><c:out value="${i}" /></option>
 												</c:when>
 												<c:otherwise>
-													<option value="<c:out value="${i}" />"><c:out
-															value="${i}" /></option>
+													<option value="<c:out value="${i}" />"><c:out value="${i}" /></option>
 												</c:otherwise>
 											</c:choose>
 										</c:forEach>
-
-									</select> <input type="hidden" name="itemId"
-										value="<c:out value="${sItem.id}" />">
-
+									</select> <input type="hidden" name="itemId" value="<c:out value="${sItem.id}" />">
 								</form>
-
 							</div>
 
 							<div class="form-operate">
@@ -75,19 +58,13 @@
 								<c:out value="${sItem.number * sItem.price}" />
 								円 <br> <br>
 								<form action="ItemCartListServlet" method="post">
-									<input type="hidden" name="id"
-										value="<c:out value="${sItem.id}" />"> <input
-										type="submit" value="削除する" name="delete">
+									<input type="hidden" name="id" value="<c:out value="${sItem.id}" />"> <input type="submit" value="削除する" name="delete">
 								</form>
 								<br>
 							</div></li>
-
 						<div class="clear"></div>
-
 					</c:if>
-
 				</c:forEach>
-
 				<li>
 
 					<div class="space">
@@ -102,18 +79,13 @@
 					</div>
 
 					<div class="title-price">
-
 						配送方法：
-
 						<c:choose>
-
 							<c:when test="${deliveryList == null}">未設定</c:when>
-
 							<c:when test="${deliveryList != null}">
-
 								<%
-								//セッションスコープを取得
-									ArrayList<DeliveryBeans> jspDeliveryList = (ArrayList<DeliveryBeans>) session.getAttribute("deliveryList");
+								            //セッションスコープを取得
+									        ArrayList<DeliveryBeans> jspDeliveryList = (ArrayList<DeliveryBeans>) session.getAttribute("deliveryList");
 											UserBeans jspUser = (UserBeans) session.getAttribute("usersession");
 
 											//カートの配達変数を設定
@@ -130,42 +102,28 @@
 
 											}
 								%>
-
 								<%=deliveryName%>
-
 							</c:when>
-
 						</c:choose>
 					</div>
 
 					<div class="form-operate">
-
 						<c:forEach var="delivery" items="${deliveryList}">
-							<c:if
-								test="${delivery != null && delivery.getUserId() == usersession.getId()}">
+							<c:if test="${delivery != null && delivery.getUserId() == usersession.getId()}">
                              合計金額：<c:out value="${delivery.price}" />円
                             </c:if>
 						</c:forEach>
-
 					</div>
-
-
 				</li>
-
 			</ul>
-
 			<div class="clear"></div>
 
 			<div class="buy">
-
 				<c:choose>
-
-					<c:when
-						test="${sItemList != null && !sItemList.isEmpty() && deliveryList != null}">
-
+					<c:when test="${sItemList != null && !sItemList.isEmpty() && deliveryList != null}">
 						<%
-						//セッションスコープを取得
-							ArrayList<ItemBeans> jspItemList = (ArrayList<ItemBeans>) session.getAttribute("sItemList");
+						            //セッションスコープを取得
+							        ArrayList<ItemBeans> jspItemList = (ArrayList<ItemBeans>) session.getAttribute("sItemList");
 									ArrayList<DeliveryBeans> jspDeliveryList = (ArrayList<DeliveryBeans>) session.getAttribute("deliveryList");
 									UserBeans jspUser = (UserBeans) session.getAttribute("usersession");
 
@@ -211,34 +169,28 @@
 						//合計価格表示文字列が設定されていた場合
 							if (totalPriceMessage != null) {
 						%>
-
 						<%=totalPriceMessage%>
 						<br>
 						<br>
 						<form action="ItemBuyConfirmServlet" method="get">
 							<input type="submit" value="購入確認へ">
 						</form>
-
 						<%
 							}
 						%>
-
 					</c:when>
 
 					<c:when test="${sItemList == null || sItemList.isEmpty()}">
-            カートに商品がありません
-            </c:when>
+                    カートに商品がありません
+                    </c:when>
 
 					<c:when test="${deliveryList == null}">
-            配送方法が未選択です
-            </c:when>
-
+                    配送方法が未選択です
+                    </c:when>
 				</c:choose>
-
 			</div>
 
 			<a href="ItemListServlet" class="a-itemlist"> ・ストア商品一覧へ</a><br>
-
 		</div>
 
 	</div>

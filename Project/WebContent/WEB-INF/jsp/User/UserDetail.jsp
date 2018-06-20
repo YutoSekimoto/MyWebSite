@@ -1,5 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
 <!DOCTYPE html>
@@ -21,36 +20,28 @@
 		<h1>ユーザー詳細</h1>
 
 		<div class="table-detail">
-
 			<table class="table">
-
 				<tr>
 					<th scope="row">ログインID</th>
 					<td><c:out value="${userDetail.loginId}" /></td>
 				</tr>
-
 				<tr>
 					<th scope="row">ユーザー名</th>
 					<td><c:out value="${userDetail.name}" /></td>
 				</tr>
-
 				<tr>
 					<th scope="row">メールアドレス</th>
 					<td><c:out value="${userDetail.email}" /></td>
 				</tr>
-
 				<tr>
 					<th scope="row">生年月日</th>
 					<td><c:out value="${userDetail.birthDate}" /></td>
 				</tr>
-
 				<tr>
 					<th scope="row">登録日時</th>
 					<td><c:out value="${userDetail.createDate}" /></td>
 				</tr>
-
 			</table>
-
 		</div>
 
 		<a href="UserListServlet" class="btn btn-primary">戻る</a>

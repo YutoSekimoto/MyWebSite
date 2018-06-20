@@ -1,5 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
@@ -32,6 +31,9 @@ body {
 	<jsp:include page="/WEB-INF/jsp/Other/Header.jsp" />
 
 	<div class="wrapper">
+
+		<h1>ホーム</h1>
+		<br> <br>
 
 		<div class="home">ストアもしくはフリーマケットで商品を購入する</div>
 

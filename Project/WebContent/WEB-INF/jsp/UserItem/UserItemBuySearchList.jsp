@@ -1,5 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
 <!DOCTYPE html>
@@ -19,7 +18,6 @@
 	<div class="wrapper">
 
 		<div class="search-info">
-
 			<h1>フリーマーケット商品検索</h1>
 			<br> <br>
 
@@ -27,20 +25,14 @@
 				<select name="categoryId">
 					<option value="">カテゴリー選択</option>
 					<c:forEach var="category" items="${categoryList}">
-						<option value="<c:out value="${category.id}" />"><c:out
-								value="${category.name}" /></option>
+						<option value="<c:out value="${category.id}" />"><c:out value="${category.name}" /></option>
 					</c:forEach>
-				</select>&nbsp;&nbsp;<input type="text" name="name" class="name"> <input
-					type="submit" value="検索" class="submit">
-				&nbsp;&nbsp;&nbsp;&nbsp;<strong>価格</strong>： <input type="number"
-					name="bottomPrice" class="price">円〜 <input type="number"
-					name="topPrice" class="price">円
+				</select>&nbsp;&nbsp;<input type="text" name="name" class="name"> <input type="submit" value="検索" class="submit"> &nbsp;&nbsp;&nbsp;&nbsp;<strong>価格</strong>： <input type="number"
+					name="bottomPrice" class="price">円〜 <input type="number" name="topPrice" class="price">円
 			</form>
-
 		</div>
 
 		<div class="item-list">
-
 			<c:if test="${eM != null}">
 				<div class="eM">
 					<c:out value="${eM}" />
@@ -49,20 +41,12 @@
 			</c:if>
 
 			<ul>
-
 				<c:forEach var="userItem" items="${userItemList}">
-					<li><a
-						href="UserItemBuyDetailServlet?id=<c:out value="${userItem.id}" />"><img
-							src="img/<c:out value="${userItem.file}" />"></a> <br> <br>
-						<a
-						href="UserItemBuyDetailServlet?id=<c:out value="${userItem.id}" />"><c:out
-								value="${userItem.name}" /></a> <br> 価格：<a
-						href="UserItemBuyDetailServlet?id=<c:out value="${userItem.id}" />"><c:out
+					<li><a href="UserItemBuyDetailServlet?id=<c:out value="${userItem.id}" />"><img src="img/<c:out value="${userItem.file}" />"></a> <br> <br> <a
+						href="UserItemBuyDetailServlet?id=<c:out value="${userItem.id}" />"><c:out value="${userItem.name}" /></a> <br> 価格：<a href="UserItemBuyDetailServlet?id=<c:out value="${userItem.id}" />"><c:out
 								value="${userItem.price}" />円</a></li>
 				</c:forEach>
-
 			</ul>
-
 		</div>
 
 	</div>

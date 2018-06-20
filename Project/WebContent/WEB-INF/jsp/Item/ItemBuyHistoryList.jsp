@@ -1,5 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
 <!DOCTYPE html>
@@ -27,7 +26,6 @@
 			<br> <br>
 
 			<table class="table">
-
 				<thead>
 					<tr>
 						<th scope="col">配送方法</th>
@@ -43,14 +41,11 @@
 							<td><c:out value="${buy.deliveryMethod}" /></td>
 							<td><c:out value="${buy.price}" />円</td>
 							<td><c:out value="${buy.formatDate}" /></td>
-							<td><a
-								href="ItemBuyHistoryDetailServlet?id=<c:out value="${buy.id}" />">詳細</a></td>
+							<td><a href="ItemBuyHistoryDetailServlet?id=<c:out value="${buy.id}" />">詳細</a></td>
 						</tr>
 					</c:forEach>
 				</tbody>
-
 			</table>
-
 		</div>
 
 		<div class="user-item-history-list">
@@ -59,7 +54,6 @@
 			<br> <br>
 
 			<table class="table">
-
 				<thead>
 					<tr>
 						<th scope="col">画像</th>
@@ -73,17 +67,14 @@
 					<c:forEach var="userBuy" items="${userBuyList}">
 						<tr>
 
-							<td class="img-table"><img
-								src="img/<c:out value="${userBuy.imageFile}" />"></td>
+							<td class="img-table"><img src="img/<c:out value="${userBuy.imageFile}" />"></td>
 							<td><c:out value="${userBuy.itemName}" /></td>
 							<td><c:out value="${userBuy.price}" />円</td>
 							<td><c:out value="${userBuy.formatDate}" /></td>
 						</tr>
 					</c:forEach>
 				</tbody>
-
 			</table>
-
 		</div>
 
 	</div>
