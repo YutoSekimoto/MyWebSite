@@ -96,7 +96,7 @@ public class ItemBuyConfirmServlet extends HttpServlet {
 
 			}
 
-			if(deliveryId == 0 || deliveryPrice == 0) {
+			if(deliveryId == 0) {
 
 				//商品カートリストへリダイレクト
 				response.sendRedirect("ItemCartListServlet");
